@@ -1,0 +1,79 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="page1">
+    <div class="menu">
+        <div class="menu-items highlight">
+            <img src="/images/table-view.svg" alt="">
+            <span>Dashboard</span>
+        </div>
+        <div class="menu-items highlight">
+            <img src="/images/user-line.svg" alt="">
+            <span>Account</span>
+        </div>
+    </div>
+    <div class="details">
+        <div class="dashboard container">
+            <div class="user d-flex">
+                <div class="user-profile">
+                    <img src="/images/neon-wallpaper-1.jpg" alt="">
+                </div>
+                <div class="user-rest">
+                    <div class="info">
+                        <h3>Anshuman Khanna</h3>
+                        <h5 class="enum">03515002821</h5>
+                    </div>
+                    <div class="buttons">
+                        <button class="pointer shadow" id="new-complaint">
+                            <img src="/images/add-line.svg" alt="">
+                            <span>New</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table">
+                <table>
+                    <tr class="heading">
+                        <th>S.no.</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <% if (complaints.length > 0) { %>
+                        <% complaints.forEach((complaintElem, index) => { %>
+                            <% let { subject, complaint, date, status } = complaintElem %>
+                            <% date = new Date(date); %>
+                            <% date = date.toLocaleDateString("en-gb"); %>
+
+                            <tr class="rows">
+                                <td><%= index + 1 %>.</td>
+                                <td><%= subject %></td>
+                                <td>
+                                    <%= complaint %>
+                                </td>
+                                <td><%= date %></td>
+                                <td><%= status %></td>
+                            </tr>
+                        <% }); %>
+                    <% } %>
+                </table>
+            </div>
+            <form action="/complaints/create" method="post" class="add-new d-flex">
+                <textarea maxlength="40" name="subject" class="subject" placeholder="Subject (40 characters only)"></textarea>
+                <textarea name="complaint" class="complaint" placeholder="Write content here"></textarea>
+                <div class="complaint-buttons buttons">
+                    <button class="pointer shadow" type="reset">
+                        Clear
+                    </button>
+                    <button class="pointer shadow" type="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="account"></div>
+    </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>

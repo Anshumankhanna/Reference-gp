@@ -1,0 +1,15 @@
+        </div>
+
+        <footer>
+            This is footer
+        </footer>
+    </div>
+
+    <% if (script !== "") {%>
+        <% script = `-${script}` %>
+    <% } %>
+    
+    <script defer src="/javascript/header.js"></script>
+    <script defer src="/javascript/script<%= script %>.js"></script>
+</body>
+</html>

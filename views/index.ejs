@@ -1,0 +1,29 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="page1">
+    <form action="/users/login" method="post" class="login">
+        <h3>Log In</h3>
+        <hr>
+        <select name="access">
+            <option value="blank" selected disabled>Personnel</option>
+            <option value="parent">Parent</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select>
+        <input type="number" placeholder="Enrollment Number" name="enrollmentNumber">
+        <input type="password" placeholder="Password" name="password">
+        <hr>
+        <input type="submit" value="Submit">
+        <div class="login-footer d-flex">
+            <a class="forgot-pass">
+                Forgot Password?
+            </a>
+            <a href="/signup" class="sign-up">
+                Sign up!
+            </a>
+        </div>
+    </form>
+</div>
+
+<%- include("./partials/footer.ejs") %>

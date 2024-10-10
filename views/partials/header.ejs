@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSIT Grievances Portal</title>
+
+    <% if (stylesheet !== "") {%>
+        <% stylesheet = `-${stylesheet}` %>
+    <% } %>
+    
+    <link rel="stylesheet" href="/stylesheets/style<%= stylesheet %>.css" type="text/css">
+</head>
+<body>
+    <% try { %>
+        <% if (error.length > 0) { %>
+            <div class="error-block absolute">
+                <%= error %>
+            </div>
+        <% } %>
+    <% } catch (err) { %>
+        <!-- nothing -->
+    <% } %>
+    <div class="main">
+        <nav>
+            <div class="banner">
+                <a href="https://msit.in/" title="msit.in" target="_blank">
+                    <div class="banner-img">
+                        <img src="./images/msit.png" alt="MSIT LOGO" title="MSIT LOGO">
+                    </div>
+                </a>
+                <a href="https://msit.in/" title="msit.in" target="_blank">
+                    <div class="banner-text">
+                        <h1 title="Maharaja Surajmal Institute of Technology">
+                            Maharaja Surajmal Institute of Technology
+                        </h1>
+                        <h5>
+                            Affiliated to GGSIPU | NAAC Accredited 'A' Grade | ISO 9001:2015 Certified | Approved by AICTE
+                        </h5>
+                    </div>
+                </a>
+            </div>
+            <div class="options">
+                <span class="border">
+                    <a href="">Home</a>
+                </span>
+                <span class="border">
+                    <a href="">About us</a>
+                </span>
+                <span class="border">
+                    <a href="">Contact us</a>
+                </span>
+                
+                <% if (button === 0) { %>
+                    <span class="border">
+                        <a href="">Sign In</a>
+                    </span>
+                <% } %>
+                <% if (button === 1) { %>
+                    <span class="border">
+                        <a href="">Log In</a>
+                    </span>
+                <% } %>
+                <% if (button === 2) { %>
+                    <span class="border">
+                        <a href="">Log Out</a>
+                    </span>
+                <% } %>
+            </div>
+        </nav>
+        <div class="pages">
+            <div id="page-bg-img"></div>
+        

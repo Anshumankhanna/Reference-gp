@@ -1,0 +1,133 @@
+@use "./mixins" as mixin;
+
+// variables start
+
+$primary-color: #e0543f;
+$secondary-color: #f9c505;
+$tertiary-color: #145365;
+
+// variables end
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html,
+body {
+    @include mixin.container;
+}
+
+/* Webkit start */
+
+::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Background color of the scrollbar track */
+    border-radius: 10px;
+    /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Background color of the scrollbar thumb */
+    border-radius: 10px;
+    /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Background color of the scrollbar thumb on hover */
+}
+
+/* Webkit end */
+
+/* tag styling start */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+nav {
+    @include mixin.container($height: 25vh);
+    background-color: #000;
+    @include mixin.d-flex($direction: column);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    @include mixin.d-flex;
+}
+
+/* tag styling end */
+
+/* reusable classes start */
+
+.border {
+    @include mixin.d-flex;
+    height: 100%;
+    padding: 0 10px;
+    transition: all ease 0.1s;
+}
+
+.border:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.highlight {
+    padding: 5px 10px 5px 7px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+}
+
+.highlight:hover {
+    background-color: #fff;
+    border: 1px solid black;
+    text-decoration: underline;
+}
+
+.container {
+    @include mixin.container;
+}
+
+.d-flex {
+    @include mixin.d-flex;
+}
+
+.relative {
+    @include mixin.absolute(".absolute");
+}
+
+.absolute {
+    position: absolute;
+    z-index: 1;
+}
+
+.temp {
+    background-color: red;
+    @include mixin.container(100px, 100px);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.shadow {
+    transition: box-shadow ease 0.3s;
+}
+
+.shadow:hover {
+    box-shadow: 1px 1px 5px #808080;
+}
+
+/* reusable classes end */

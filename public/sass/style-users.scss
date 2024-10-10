@@ -1,0 +1,192 @@
+@use "./all" as alls;
+@use "sass:math";
+
+$size: math.div(23, 1536) * 100vw;
+
+.page1 {
+    @include alls.d-flex(space-between, flex-start);
+    gap: 10px;
+    padding: 10px;
+
+    > * {
+        border-radius: 5px;
+        /* box-shadow: 0px 0px 10px #000; */
+        max-height: 100%;
+        background-color: #eee;
+    }
+}
+
+.menu {
+    width: 15%;
+    @include alls.d-flex(flex-start, flex-start, column);
+    padding: 15px;
+    gap: 5px;
+    font-size: 1.2em;
+}
+
+.menu-items {
+    @include alls.d-flex(flex-start);
+    gap: 10px;
+    cursor: pointer;
+    /* padding: 10px; */
+
+    & img {
+        @include alls.container(15px, 15px);
+    }
+}
+
+.details {
+    @include alls.container(85%);
+    padding: 5px;
+}
+
+.dashboard {
+    @include alls.d-flex(flex-start, center, column);
+    gap: 10px;
+    position: relative;
+}
+
+.user {
+    @include alls.container($height: 15vh);
+    gap: 1vw;
+    font-size: 1.5em;
+
+    > * {
+        @include alls.d-flex;
+        height: 100%;
+        padding: 5px 10px;
+    }
+}
+
+.user-profile {
+    width: 10vw;
+
+    & img {
+        @include alls.container(7vw, 7vw);
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+    }
+}
+
+.user-rest {
+    justify-content: space-between;
+    /* background-color: red; */
+    width: 80vw;
+}
+
+.info {
+    width: 70%;
+    @include alls.d-flex(center, flex-start, column);
+}
+
+.enum {
+    color: rgb(0, 157, 255);
+}
+
+.buttons {
+    & button {
+        @include alls.d-flex;
+        border: none;
+        outline: none;
+        background-color: lightblue;
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-size: $size;
+    }
+
+    & img {
+        width: $size;
+    }
+}
+
+.table {
+    width: 100%;
+    overflow-y: scroll;
+    padding: 0 5px;
+
+    & table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #000;
+        padding: 2px 5px;
+
+        & th,
+        & td {
+            border: 2px solid #000;
+            padding: 2px 5px;
+        }
+
+        & th:nth-child(1),
+        & td:nth-child(1) {
+            width: 5vw;
+        }
+
+        & th:nth-child(2),
+        & td:nth-child(2) {
+            width: 15vw;
+        }
+
+        & th:nth-child(4),
+        & td:nth-child(4),
+        & th:nth-child(5),
+        & td:nth-child(5) {
+            width: 10vw;
+        }
+
+        & td {
+            text-align: center;
+            font-size: 13px;
+        }
+
+        & td:nth-child(3) {
+            text-align: left;
+        }
+    }
+}
+
+.add-new {
+    @include alls.container(80%, 80%);
+    flex-direction: column;
+    gap: 1vh;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fff9;
+    backdrop-filter: blur(5px);
+    padding: 1vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -2;
+    scale: 0;
+    transition: scale ease 0.3s;
+
+    > * {
+        width: 100%;
+        border: 1px solid #000;
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 1vw;
+        resize: none;
+    }
+}
+
+.subject {
+    height: 15%;
+    font-size: 1.5vmax;
+    overflow-y: hidden;
+}
+
+.complaint {
+    height: 75%;
+    font-size: 2vmax;
+    align-items: flex-start;
+}
+
+.complaint-buttons {
+    border: 0;
+    background-color: transparent;
+    @include alls.d-flex(space-between);
+    height: 10%;
+}

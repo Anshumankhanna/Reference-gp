@@ -1,0 +1,7 @@
+@use "./mixins" as mixin;
+@use "./boiler-plate";
+
+footer {
+    height: 5vh;
+    background-color: #ddd;
+}
