@@ -52,7 +52,12 @@ module.exports.loginUser = async (req, res) => {
             let token = generateToken(user);
 
             res.cookie("token", token);
-            res.redirect("/users")
+
+            if (user.access !== "admin") {
+                res.redirect("/users");
+            } else {
+                res.redirect("/admins");
+            }
         } else {
             req.flash("error", "Email or password incorrect")
             return res.redirect("/");

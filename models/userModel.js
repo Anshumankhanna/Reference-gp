@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
     access: {
         type: String,
-        enum: ["parent", "teacher", "student"],
+        enum: ["parent", "teacher", "student", "admin"],
         required: true
     },
     enrollmentNumber: {

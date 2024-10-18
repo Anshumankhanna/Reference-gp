@@ -23,7 +23,7 @@
                         <h5 class="enum">03515002821</h5>
                     </div>
                     <div class="buttons">
-                        <button class="pointer shadow" id="new-complaint">
+                        <button class="pointer shadow" id="new-complaint" onclick="addNew.showModal()">
                             <img src="/images/add-line.svg" alt="">
                             <span>New</span>
                         </button>
@@ -59,18 +59,20 @@
                     <% } %>
                 </table>
             </div>
-            <form action="/complaints/create" method="post" class="add-new d-flex">
-                <textarea maxlength="40" name="subject" class="subject" placeholder="Subject (40 characters only)"></textarea>
-                <textarea name="complaint" class="complaint" placeholder="Write content here"></textarea>
-                <div class="complaint-buttons buttons">
-                    <button class="pointer shadow" type="reset">
-                        Clear
-                    </button>
-                    <button class="pointer shadow" type="submit">
-                        Submit
-                    </button>
-                </div>
-            </form>
+            <dialog id="addNew">
+                <form action="/complaints/create" method="post" class="add-new d-flex">
+                    <textarea maxlength="40" name="subject" class="subject" placeholder="Subject (40 characters only)"></textarea>
+                    <textarea name="complaint" class="complaint" placeholder="Write content here"></textarea>
+                    <div class="complaint-buttons buttons">
+                        <button class="pointer shadow" type="reset">
+                            Clear
+                        </button>
+                        <button class="pointer shadow" type="submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </dialog>
         </div>
         <div class="account"></div>
     </div>

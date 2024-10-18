@@ -10,6 +10,11 @@ router.get("/login", (req, res) => {
     res.redirect("/");
 });
 
+router.get("/forgotPassword", (req, res) => {
+    req.flash("error", "Contact an admin");
+    res.redirect("/");
+})
+
 router.get("/signup", (req, res) => {
     let error = req.flash("error");
     
