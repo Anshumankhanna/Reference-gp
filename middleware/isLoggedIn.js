@@ -1,14 +1,16 @@
-const jwt = require('jsonwebtoken');
-const userModel = require('../models/userModel');
+import jwt from "jsonwebtoken";
+import userModel from "../models/userModel.js";
 
-module.exports = async (req, res, next) => {
+const { verify } = jwt;
+
+export default async (req, res, next) => {
     if (!req.cookies.token) {
         req.flash("error", "You need to login first");
         return res.redirect("/");
     }
 
     try {
-        let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
+        let decoded = verify(req.cookies.token, process.env.JWT_KEY);
         let user = await userModel
         .findOne({ enrollmentNumber: decoded.enrollmentNumber })
         .select("-password");

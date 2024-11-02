@@ -1,9 +1,10 @@
 const newComplaint = document.getElementById("new-complaint");
-const addNew = document.querySelector(".add-new");
+const addNew = document.querySelector("#addNew");
 
 newComplaint.addEventListener("click", () => {
-    const addNewStyle = addNew.style;
-    
-    addNewStyle.zIndex = "1";
-    addNewStyle.scale = "1";
+    addNew.showModal();
+});
+
+addNew.addEventListener("click", () => {
+    addNew.close();
 });

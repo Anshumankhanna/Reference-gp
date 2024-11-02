@@ -1,19 +1,29 @@
-const express = require("express");
+// we have to import 'static' as 'static_' because 'static' is a keyword.
+import express, { json, urlencoded, static as static_ } from "express";
+import cookieParser from "cookie-parser";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
+
+import expressSession from "express-session";
+import flash from "connect-flash";
+
+// this runs the code that is in this file.
+import "dotenv/config";
+import "./config/mongoose-connection.js";
+
+import indexRouter from "./routes/indexRouter.js";
+import userRouter from "./routes/userRouter.js";
+import adminRouter from "./routes/adminRouter.js";
+import complaintRouter from "./routes/complaintRouter.js";
+
 const app = express();
-const cookieParser = require("cookie-parser");
-const path = require("path");
-const expressSession = require("express-session");
-const flash = require("connect-flash");
-const db = require("./config/mongoose-connection");
-const dotenv = require("dotenv").config();
+// Get the file path of the current module
+const __filename = fileURLToPath(import.meta.url);
+// Get the directory path of the current module
+const __dirname = dirname(__filename);
 
-const indexRouter = require("./routes/indexRouter");
-const userRouter = require("./routes/userRouter");
-const adminRouter = require("./routes/adminRouter");
-const complaintRouter = require("./routes/complaintRouter");
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(expressSession({
     resave: false,
@@ -21,7 +31,7 @@ app.use(expressSession({
     secret: process.env.EXPRESS_SESSION_SECRET
 }));
 app.use(flash());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(static_(join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 app.use("/", indexRouter);

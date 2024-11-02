@@ -23,7 +23,7 @@
                         <h5 class="enum">03515002821</h5>
                     </div>
                     <div class="buttons">
-                        <button class="pointer shadow" id="new-complaint" onclick="addNew.showModal()">
+                        <button class="pointer shadow" id="new-complaint">
                             <img src="/images/add-line.svg" alt="">
                             <span>New</span>
                         </button>
@@ -60,7 +60,7 @@
                 </table>
             </div>
             <dialog id="addNew">
-                <form action="/complaints/create" method="post" class="add-new d-flex">
+                <form action="/complaints/create" method="post" class="add-new d-flex container">
                     <textarea maxlength="40" name="subject" class="subject" placeholder="Subject (40 characters only)"></textarea>
                     <textarea name="complaint" class="complaint" placeholder="Write content here"></textarea>
                     <div class="complaint-buttons buttons">

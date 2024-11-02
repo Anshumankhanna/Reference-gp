@@ -1,8 +1,12 @@
-const bcrypt = require('bcrypt');
-const userModel = require('../models/userModel');
-const { generateToken } = require('../utils/generateToken');
+import { genSalt, hash, compare } from "bcrypt";
+import userModel from "../models/userModel.js";
+import { generateToken } from "../utils/generateToken.js";
 
-module.exports.signupUser = async (req, res) => {
+// const bcrypt = require('bcrypt');
+// const userModel = require('../models/userModel');
+// const { generateToken } = require('../utils/generateToken');
+
+export const signupUser = async (req, res) => {
     try {
         let { access, enrollmentNumber, fullname, email, mobile, password } = req.body;
         let user = await userModel.findOne({ enrollmentNumber });
@@ -12,8 +16,8 @@ module.exports.signupUser = async (req, res) => {
             return res.redirect("/");
         }
 
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(password, salt, async (err, hash) => {
+        genSalt(10, (err, salt) => {
+            hash(password, salt, async (err, hash) => {
                 if (err) {
                     return res.status(400).send(err.message);
                 } else {
@@ -36,7 +40,7 @@ module.exports.signupUser = async (req, res) => {
         res.status(503).send(err.message);
     }
 };
-module.exports.loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
     let { access, enrollmentNumber, password } = req.body;
     let user = await userModel.findOne({ access, enrollmentNumber });
 
@@ -45,7 +49,7 @@ module.exports.loginUser = async (req, res) => {
         return res.redirect("/");
     }
 
-    bcrypt.compare(password, user.password, (err, result) => {
+    compare(password, user.password, (err, result) => {
         if (err) {
             res.send(err);
         } else if (result) {
@@ -64,7 +68,7 @@ module.exports.loginUser = async (req, res) => {
         }
     });
 };
-module.exports.logout = (req, res) => {
+export const logout = (req, res) => {
     res.cookie("token", "");
     res.redirect("/");
 };

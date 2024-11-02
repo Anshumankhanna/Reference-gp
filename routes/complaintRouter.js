@@ -1,10 +1,12 @@
-const express = require("express");
-const router = express.Router();
-const userModel = require("../models/userModel");
-const complaintModel = require("../models/complaintModel");
-const isLoggedIn = require("../middleware/isLoggedIn");
+import { Router } from "express";
 
-let capitalize = (string) => {
+import isLoggedIn from "../middleware/isLoggedIn.js";
+import userModel from "../models/userModel.js";
+import complaintModel from "../models/complaintModel.js";
+
+const router = Router();
+
+const capitalize = (string) => {
     return string[0].toUpperCase() + string.slice(1);
 };
 
@@ -34,4 +36,4 @@ router.post("/create", isLoggedIn, async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

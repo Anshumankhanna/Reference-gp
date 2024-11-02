@@ -1,19 +1,19 @@
-const express = require("express");
-const isLoggedIn = require("../middleware/isLoggedIn");
-const adminModel = require("../models/adminModel");
-const userModel = require("../models/userModel");
-const isDevAdmin = require("../middleware/isDevAdmin");
-const isAdmin = require("../middleware/isAdmin");
-const complaintModel = require("../models/complaintModel");
-const router = express.Router();
+import { Router } from "express";
 
+import isLoggedIn from "../middleware/isLoggedIn.js";
+import isDevAdmin from "../middleware/isDevAdmin.js";
+import isAdmin from "../middleware/isAdmin.js";
+import adminModel from "../models/adminModel.js";
+import userModel from "../models/userModel.js";
+import complaintModel from "../models/complaintModel.js";
+
+const router = Router();
 
 router.get("/", isLoggedIn, isAdmin, async (_req, res) => {
     let complaints = await complaintModel.find().populate({
         path: "user",
         select: "access enrollmentNumber fullname email mobile"
     });
-    console.log(complaints);
 
     res.render("admin", {
         stylesheet: "users",
@@ -23,7 +23,6 @@ router.get("/", isLoggedIn, isAdmin, async (_req, res) => {
     });
 });
 router.post("/create/devadmin", isLoggedIn, async (req, res) => {
-    console.log(req.body);
     if (req.body.auth_key !== process.env.AUTH_KEY) {
         req.flash("error", "You can't access this route")
     } else {
@@ -57,4 +56,4 @@ router.post("/create", isLoggedIn, isDevAdmin, async (req, res) => {
     res.redirect("/users");
 });
 
-module.exports = router;
+export default router;

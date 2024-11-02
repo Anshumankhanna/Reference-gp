@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const adminSchema = mongoose.Schema({
+const adminSchema = Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "user",
         required: true
     },
@@ -13,4 +13,4 @@ const adminSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("admin", adminSchema);
+export default model("admin", adminSchema);

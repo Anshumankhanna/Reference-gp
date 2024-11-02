@@ -2,6 +2,7 @@
     "name": "grievance-portal",
     "version": "1.0.0",
     "description": "",
+    "type": "module",
     "main": "app.js",
     "scripts": {
         "build": "sass --update public/sass:public/stylesheets",

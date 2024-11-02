@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const { signupUser, loginUser, logout } = require("../contollers/authController");
-const isLoggedIn = require("../middleware/isLoggedIn");
-const userModel = require("../models/userModel");
+import { Router } from "express";
+import isLoggedIn from "../middleware/isLoggedIn.js";
+import { signupUser, loginUser, logout } from "../contollers/authController.js";
+
+const router = Router();
 
 router.get("/", isLoggedIn, async (req, res) => {
     await req.user.populate("complaints");
@@ -30,4 +30,4 @@ router.post("/signup", signupUser);
 router.post("/login", loginUser);
 router.get("/logout", logout);
 
-module.exports = router;
+export default router;

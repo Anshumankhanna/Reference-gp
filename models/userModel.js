@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const userSchema = mongoose.Schema({
+const userSchema = Schema({
     access: {
         type: String,
         enum: ["parent", "teacher", "student", "admin"],
@@ -31,9 +31,9 @@ const userSchema = mongoose.Schema({
         default: ""
     },
     complaints: [{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "complaint"
     }]
 });
 
-module.exports = mongoose.model("user", userSchema);
+export default model("user", userSchema);

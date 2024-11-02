@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
-const config = require("config");
-const dbgr = require("debug")("development:mongoose");
+import { connect, connections } from "mongoose";
+import config from "config";
+import debug from "debug";
 
-mongoose
-.connect(`${config.get("MONGODB_URI")}/grievance-portal`)
+const dbgr = debug("development:mongoose");
+
+connect(`${config.get("MONGODB_URI")}/grievance-portal`)
 .then(() => {
     dbgr("connected");
 })
@@ -11,4 +12,4 @@ mongoose
     dbgr(err);
 });
 
-module.exports = mongoose.connections;
+export default connections;
