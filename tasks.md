@@ -6,6 +6,10 @@
 // Node, Next, Mongodb
 // Postman, .env, Docker, GitHub, Prettier
 
+main next se react pe data bhejoonga,
+react ka code tu likhegi
+to vahan placeholder rakhegi na
+
 because production, becomes easy in long term
 javascript -> obj -> prop -> react -> properties
 ?how do you know kya properties hain?
@@ -29,5 +33,7 @@ user / admin / dev admin profile page
 admin control page
 dev admin control page
 forgot password page
+
+es modules me hi work karna hai, jo ki tu vaise bhi kar rhi hogi, because React.
 
 react, tailwind, ts
